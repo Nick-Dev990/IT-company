@@ -1,25 +1,43 @@
 /* Shared mobile layout fixes for every page of the IT Company site. */
+.mobile-nav-toggle { display: none; }
 @media (max-width: 760px) {
     *, *::before, *::after { box-sizing: border-box; }
     html, body { width: 100%; max-width: 100%; overflow-x: clip; }
     body { min-width: 320px; }
     img, video, iframe { max-width: 100%; }
 
-    /* Compact, centered navigation that stays in normal page flow. */
+    /* Compact header with an accessible, collapsible mobile menu. */
     header {
-        position: sticky; inset: auto; width: 100%; min-height: 0;
-        flex-direction: column; justify-content: center; align-items: center;
-        gap: 6px; padding: 10px 14px 12px; overflow: visible;
+        position: sticky; inset: auto; top: 0; width: 100%; min-height: 0;
+        flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;
+        gap: 0 12px; padding: 10px 16px; overflow: visible;
     }
     header::before { display: none; }
-    header h2 { margin: 0; font-size: clamp(1rem, 4.8vw, 1.3rem); line-height: 1.15; text-align: center; }
-    header nav {
-        display: flex; width: 100%; min-width: 0; flex-wrap: wrap;
-        justify-content: center; align-items: center; gap: 7px 13px; margin: 0; padding: 0;
+    header h2 { flex: 1 1 auto; min-width: 0; margin: 0; font-size: clamp(1rem, 4.8vw, 1.3rem); line-height: 1.15; text-align: left; }
+    .mobile-nav-toggle {
+        display: inline-flex; flex: 0 0 44px; width: 44px; height: 44px; align-items: center; justify-content: center;
+        padding: 0; border: 1px solid rgba(255,255,255,.32); border-radius: 8px; color: #fff; background: transparent;
+        cursor: pointer; touch-action: manipulation;
     }
-    header nav a { margin: 0; font-size: clamp(.66rem, 2.8vw, .78rem); line-height: 1.25; white-space: nowrap; }
-    header nav a::after { bottom: -3px; }
-    header.sticky { padding: 9px 14px 10px; }
+    .mobile-nav-toggle:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+    .mobile-nav-toggle .toggle-lines, .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after {
+        display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease;
+    }
+    .mobile-nav-toggle .toggle-lines { position: relative; }
+    .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after { content: ""; position: absolute; left: 0; }
+    .mobile-nav-toggle .toggle-lines::before { top: -6px; }
+    .mobile-nav-toggle .toggle-lines::after { top: 6px; }
+    .menu-open .mobile-nav-toggle .toggle-lines { background: transparent; }
+    .menu-open .mobile-nav-toggle .toggle-lines::before { top: 0; transform: rotate(45deg); }
+    .menu-open .mobile-nav-toggle .toggle-lines::after { top: 0; transform: rotate(-45deg); }
+    header nav {
+        display: none; flex: 1 0 100%; width: 100%; min-width: 0; flex-direction: column;
+        justify-content: flex-start; align-items: stretch; gap: 0; margin: 0; padding: 8px 0 0;
+    }
+    .menu-open nav { display: flex; }
+    header nav a { margin: 0; padding: 11px 8px; border-top: 1px solid rgba(255,255,255,.12); font-size: .9rem; line-height: 1.3; white-space: normal; }
+    header nav a::after { display: none; }
+    header.sticky { padding: 8px 16px; }
     .whatsapp-bubble { right: 16px; bottom: 16px; }
 
     /* Home hero: keep animated letter spans together and heading words intact. */
@@ -51,9 +69,21 @@
     .role img, .roles img { display: block; width: 100%; max-width: 480px; height: auto; margin: 0 auto; }
     .list ul { padding-left: 1.25rem; }
     .services { padding: 54px 6%; }
-    .service-grid, .testimonial-grid { grid-template-columns: minmax(0, 1fr); }
+    .service-grid, .testimonial-grid {
+        display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px;
+        width: 100%; max-width: 620px; margin: 0 auto;
+    }
+    .service-grid .service, .testimonial-grid .testimonial {
+        width: 100%; min-width: 0; max-width: none; margin: 0;
+    }
+    .service-grid .service { padding: 20px; text-align: left; }
+    .service-grid .service i { margin: 0 0 12px; }
+    .service-grid .service h3, .service-grid .service p { margin-left: 0; }
+    .testimonial-grid .testimonial { padding: 24px 20px; }
+    .testimonials { padding: 0 6%; }
     .statistics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; padding: 38px 6%; }
-    .stat { min-width: 0; text-align: center; }
+    .stat { min-width: 0; padding: 0 8px; border-right: 0; text-align: center; }
+    .stat h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); }
 
     /* Shared call-to-action and footer spacing. */
     .contact { width: 100%; padding: 48px 6%; }
@@ -105,16 +135,21 @@
     .mv-heading h3 { font-size: clamp(1.65rem, 7vw, 2rem); }
     .mv-column ul { padding-left: 0; }
     .divider { display: none; }
+    .commitment-section { padding: 52px 6%; background-attachment: scroll; }
     .commitment-container { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
     .commitment-image, .commitment-content { width: 100%; min-width: 0; }
-    .commitment-image { height: clamp(230px, 68vw, 360px); }
+    .commitment-image { height: clamp(230px, 68vw, 360px); margin: 0; }
     .commitment-image .main-image { width: 100%; height: 100%; object-fit: cover; }
-    .commitment-image .secondary-image { max-width: 42%; height: auto; }
+    .commitment-image .secondary-image {
+        right: 12px; bottom: 12px; width: 38%; max-width: 170px; height: auto;
+        border: 5px solid #fff; border-radius: 12px;
+    }
     .commitment-content h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.2; }
     .commitment-list { grid-template-columns: minmax(0, 1fr); }
     .faq-section { padding: 50px 6%; }
     .faq-header h2 { font-size: clamp(1.8rem, 8vw, 2.5rem); line-height: 1.2; }
-    .faq-container, .faq-column { width: 100%; max-width: none; grid-template-columns: minmax(0, 1fr); }
+    .faq-container { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; width: 100%; max-width: none; }
+    .faq-column { width: 100%; min-width: 0; gap: 16px; }
 
     /* Services page. */
     .services-section { display: block; padding: 50px 6%; }
@@ -158,10 +193,44 @@
 }
 
 @media (max-width: 380px) {
-    header nav { gap: 7px 10px; }
-    header nav a { font-size: .67rem; }
+    header nav a { font-size: .9rem; }
     .hero .title, .hero .sub { font-size: clamp(1.8rem, 8.4vw, 2.35rem); }
     .statistics { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Switch to the compact header before the full desktop navigation runs out of room. */
+@media (min-width: 761px) and (max-width: 960px) {
+    header {
+        position: sticky; inset: auto; top: 0; width: 100%; min-height: 0;
+        flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;
+        gap: 0 12px; padding: 10px 24px; overflow: visible;
+    }
+    header::before { display: none; }
+    header h2 { flex: 1 1 auto; min-width: 0; margin: 0; font-size: 1.25rem; line-height: 1.15; }
+    .mobile-nav-toggle {
+        display: inline-flex; flex: 0 0 44px; width: 44px; height: 44px; align-items: center; justify-content: center;
+        padding: 0; border: 1px solid rgba(255,255,255,.32); border-radius: 8px; color: #fff; background: transparent;
+        cursor: pointer; touch-action: manipulation;
+    }
+    .mobile-nav-toggle:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+    .mobile-nav-toggle .toggle-lines, .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after {
+        display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease;
+    }
+    .mobile-nav-toggle .toggle-lines { position: relative; }
+    .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after { content: ""; position: absolute; left: 0; }
+    .mobile-nav-toggle .toggle-lines::before { top: -6px; }
+    .mobile-nav-toggle .toggle-lines::after { top: 6px; }
+    .menu-open .mobile-nav-toggle .toggle-lines { background: transparent; }
+    .menu-open .mobile-nav-toggle .toggle-lines::before { top: 0; transform: rotate(45deg); }
+    .menu-open .mobile-nav-toggle .toggle-lines::after { top: 0; transform: rotate(-45deg); }
+    header nav {
+        display: none; flex: 1 0 100%; width: 100%; min-width: 0; flex-direction: column;
+        justify-content: flex-start; align-items: stretch; gap: 0; margin: 0; padding: 8px 0 0;
+    }
+    .menu-open nav { display: flex; }
+    header nav a { margin: 0; padding: 11px 8px; border-top: 1px solid rgba(255,255,255,.12); font-size: .9rem; line-height: 1.3; white-space: normal; }
+    header nav a::after { display: none; }
+    header.sticky { padding: 8px 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -171,34 +240,3 @@
     }
 }
 
-
-/* Hamburger menu takes the place of wrapping links on narrow screens. */
-.mobile-nav-toggle { display: none; }
-@media (max-width: 760px) {
-  header { position: sticky; top: 0; inset: auto; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0 12px; padding: 10px 16px; overflow: visible; }
-  header h2 { flex: 1 1 auto; min-width: 0; margin: 0; text-align: left; }
-  .mobile-nav-toggle { display: inline-flex; flex: 0 0 44px; width: 44px; height: 44px; align-items: center; justify-content: center; padding: 0; border: 1px solid rgba(255,255,255,.32); border-radius: 8px; color: #fff; background: transparent; cursor: pointer; touch-action: manipulation; }
-  .mobile-nav-toggle .toggle-lines, .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after { display: block; width: 20px; height: 2px; border-radius: 2px; background: currentColor; transition: transform .2s ease; }
-  .mobile-nav-toggle .toggle-lines { position: relative; }
-  .mobile-nav-toggle .toggle-lines::before, .mobile-nav-toggle .toggle-lines::after { content: ""; position: absolute; left: 0; }
-  .mobile-nav-toggle .toggle-lines::before { top: -6px; }
-  .mobile-nav-toggle .toggle-lines::after { top: 6px; }
-  .menu-open .mobile-nav-toggle .toggle-lines { background: transparent; }
-  .menu-open .mobile-nav-toggle .toggle-lines::before { top: 0; transform: rotate(45deg); }
-  .menu-open .mobile-nav-toggle .toggle-lines::after { top: 0; transform: rotate(-45deg); }
-  header nav { display: none; flex: 1 0 100%; width: 100%; min-width: 0; flex-direction: column; justify-content: flex-start; align-items: stretch; gap: 0; margin: 0; padding: 8px 0 0; }
-  header.menu-open nav { display: flex; }
-  header nav a { margin: 0; padding: 11px 8px; border-top: 1px solid rgba(255,255,255,.12); font-size: .9rem; line-height: 1.3; white-space: normal; }
-  header nav a::after { display: none; }
-  header.sticky { padding: 8px 16px; }
-}
-
-@media (max-width: 760px) {
-  .faq-container { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; min-width: 0; }
-  .faq-column { width: 100%; min-width: 0; }
-  .faq-question { min-width: 0; gap: 12px; padding: 16px 14px; }
-  .faq-question span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
-  .faq-question i { flex: 0 0 auto; }
-  .mobile-nav-toggle:hover { background: rgba(255,255,255,.12); transform: none; }
-  .mobile-nav-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-}
