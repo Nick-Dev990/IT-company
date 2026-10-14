@@ -31,10 +31,13 @@
       if (event.target.closest("a")) closeMenu();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeMenu();
+      if (event.key === "Escape" && header.classList.contains("menu-open")) {
+        closeMenu();
+        button.focus();
+      }
     });
     window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 761px)").matches) closeMenu();
+      if (window.matchMedia("(min-width: 961px)").matches) closeMenu();
     });
   };
 
@@ -44,3 +47,4 @@
     initMobileNavigation();
   }
 })();
+
