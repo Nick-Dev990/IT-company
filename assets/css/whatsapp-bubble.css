@@ -1,4 +1,7 @@
 /* WhatsApp Web shortcut with a compact green signal pulse. */
+@import url("mobile-responsive.css?v=2026-10-14");
+
+
 .whatsapp-bubble {
     position: fixed;
     right: 26px;
