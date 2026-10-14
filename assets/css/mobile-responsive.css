@@ -86,7 +86,7 @@
     .stat h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); }
 
     /* Shared call-to-action and footer spacing. */
-    .contact { width: 100%; padding: 48px 0; }
+    .contact { width: 100%; max-width: none; margin: 0; padding: 0; }
     .background {
         display: flex; width: 100%; max-width: none; margin: 0; height: auto; min-height: 310px; flex-direction: column;
         align-items: center; justify-content: center; padding: 40px 20px;
