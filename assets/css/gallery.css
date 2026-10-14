@@ -1,0 +1,213 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #0f172a;
+    color: white;
+    display: flex;
+    backdrop-filter: blur(15px);
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 8%;
+    transition: 0.4s ease;
+    overflow: hidden;
+    z-index: 1000;
+}
+header::before{
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-image: radial-gradient(rgba(255,255,255,0.7) 3px, transparent 3px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    top: 30px;
+    left: 40px;
+}
+header h2{
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+header h2:hover{
+    color:#3b82f6
+}
+nav a{
+    color: white;
+    margin-left: 35px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+    transition: 0.4s;
+}
+nav a:hover{
+    color: #3b82f6;
+}
+nav a::after{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #3b82f6;
+    left: 0;
+    bottom: -8px;
+    transition: 0.4s;
+}
+nav a:hover::after{
+    width: 100%;
+}
+.gallery-hero{
+      position: relative;
+      height: 60vh;
+      background: linear-gradient(rgba(0,20,55,0.85),rgba(0,20,55,0.85)), url(../images/data.jpg);
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding-top: 90px;
+}
+.gallery-content{
+    position: relative;
+    max-width: 700px;
+    margin-left: 8%;
+    z-index: 2;
+}
+.gallery-content h1{
+    font-size: 65px;
+    letter-spacing: 3px;
+    color: #3b82f6;
+    margin-bottom: -10px;
+}
+.gallery-content p{
+    font-size: 18px;
+    line-height: 1.7;
+    color: #d1d5db;
+    margin: 15px auto 0;
+    margin-bottom: 0;
+}
+button{
+    padding: 12px 25px;
+    border: none;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+    border-radius: 40px;
+    font-weight: bold;
+    transition: 0.4s;
+}
+button:hover{
+    background: #4f46e5;
+    font-weight: bold;
+    transform: translateY(-5px);
+}
+.contact{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+.background{
+    width: 100%;
+    max-width: 1300px;
+    height: 60vh;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(rgba(37,99,235,0.65),rgba(0,0,0,0.65)),url("../images/new image.avif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.background h1{
+    font-size: 35px;
+    margin-bottom: -10px;
+}
+.background p{
+    max-width: 700px;
+    margin: 0 auto 35px;
+    line-height: 1.8;
+}
+.background button{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 30px;
+    padding: 16px 45px;
+    font-size: 18px;
+    font-weight: 600;
+}
+footer{
+    background: #111827;
+    color: white;
+    padding: 70px 8%;
+}
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 40px;
+}
+.footer-col h2{
+    color: #3b82f6;
+    margin-bottom: 20px;
+}
+.footer-col h3{
+    margin-bottom: 20px;
+}
+.footer-col p{
+    color: #d1d5db;
+    line-height: 1.8;
+}
+.footer-col ul{
+    list-style: none;
+}
+.footer-col ul li{
+    margin-bottom: 15px;
+}
+.footer-col ul li a{
+    color: #d1d5db;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.footer-col ul li a:hover{
+    color: #3b82f6;
+}
+.social-icons{
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+.social-icons a{
+    width: 40px;
+    height: 40px;
+    background: #1f2937;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: 0.3s;
+}
+.social-icons a:hover{
+    background: #3b82f6;
+}
+.hr{
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 50px 0 25px;
+}
+.footer-bottom{
+    text-align: center;
+    color: #9ca3af;
+}

@@ -1,0 +1,47 @@
+/* WhatsApp Web shortcut with a compact green signal pulse. */
+.whatsapp-bubble {
+    position: fixed;
+    right: 26px;
+    bottom: 28px;
+    z-index: 1200;
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    background: #25d366;
+    box-shadow: 0 8px 24px rgba(15,23,42,.28);
+    box-sizing: border-box;
+    overflow: visible;
+    font-size: 34px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+@media (max-width: 600px) {
+    .whatsapp-bubble { right: 16px; bottom: 18px; width: 54px; height: 54px; font-size: 30px; }
+}
+
+
+
+.whatsapp-bubble::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: whatsapp-signal 2.4s ease-out infinite;
+}
+@keyframes whatsapp-signal {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,.72); opacity: .9; }
+    78% { box-shadow: 0 0 0 1.5px rgba(37,211,102,0); opacity: .2; }
+    100% { box-shadow: 0 0 0 1.5px rgba(37,211,102,0); opacity: 0; }
+}
+.whatsapp-bubble:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,23,42,.32); }
+.whatsapp-bubble:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
+
+
+
+
