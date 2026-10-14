@@ -495,11 +495,13 @@ button:hover{
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 100px 0 0;
+    margin: 0;
+    padding: 0;
 }
 .background{
     width: 100%;
-    max-width: 1300px;
+    max-width: none;
+    margin: 0;
     height: 60vh;
     text-align: center;
     color: #fff;
