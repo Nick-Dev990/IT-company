@@ -1,6 +1,5 @@
 /* WhatsApp Web shortcut with a compact green signal pulse. */
-@import url("mobile-responsive.css?v=hamburger-20261014b");
-
+@import url("mobile-responsive.css?v=hamburger-20261014");
 
 .whatsapp-bubble {
     position: fixed;
@@ -44,6 +43,7 @@
 }
 .whatsapp-bubble:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(15,23,42,.32); }
 .whatsapp-bubble:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
+
 
 
 
