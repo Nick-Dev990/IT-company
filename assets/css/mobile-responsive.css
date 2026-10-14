@@ -192,3 +192,13 @@
   header nav a::after { display: none; }
   header.sticky { padding: 8px 16px; }
 }
+
+@media (max-width: 760px) {
+  .faq-container { display: grid; grid-template-columns: minmax(0, 1fr); width: 100%; min-width: 0; }
+  .faq-column { width: 100%; min-width: 0; }
+  .faq-question { min-width: 0; gap: 12px; padding: 16px 14px; }
+  .faq-question span { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+  .faq-question i { flex: 0 0 auto; }
+  .mobile-nav-toggle:hover { background: rgba(255,255,255,.12); transform: none; }
+  .mobile-nav-toggle:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+}
