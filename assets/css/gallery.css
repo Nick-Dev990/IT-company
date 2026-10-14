@@ -120,7 +120,8 @@ button:hover{
 }
 .background{
     width: 100%;
-    max-width: 1300px;
+    max-width: none;
+    margin: 0;
     height: 60vh;
     text-align: center;
     color: #fff;
